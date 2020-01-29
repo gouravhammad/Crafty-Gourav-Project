@@ -1,0 +1,55 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.quantity
+{
+  width: 20px;
+  margin-right: -1.5px;
+  margin-left: -2px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid #000;
+}
+
+.qty-btn{
+    border-radius: 0px;
+    font-weight: bold;
+}  
+
+.change-btn
+{
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: -1px;
+}
+
+.pay-btn
+{
+  border-radius: 0px;
+}
+
+@media only screen and (max-width: 575px) {
+  
+  .quantity
+  {
+      width: 20px;
+      margin-right: -1.5px;
+      margin-left: -2px;
+      font-size: 16.5px;
+      padding-bottom: 3px;
+      padding-top: 1px;
+      text-align: center;
+      border: 1px solid #000;
+  }
+
+  
+
+}

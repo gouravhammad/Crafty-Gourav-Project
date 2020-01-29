@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Best Handmade Art & Craft products for your special one. Top quality products which are customizable according to your needs. Best place to buy Handmade Crafty Products.">
+    <meta name="keywords" content="Craft,Art,Handmade,Gourav,Hammad,Card,Box,Gift,DIY,Crafty,Crafty Gourav, Gourav Hammad, Art & Craft, Handmade Art, Handmade Craft, Products, Best Gift">
+    <meta name="author" content="Gourav Hammad">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Crafty Gourav</title>
+
+    <link rel='icon' href='../background/logo.jpg' />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/customCSS/sidebar.css">
+    <link rel="stylesheet" href="/customCSS/common.css">
+    <link rel="stylesheet" href="/customCSS/login.css"> 
+    <link rel="stylesheet" href="/customCSS/jquery.mCustomScrollbar.min.css">
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="bg-danger">
+            <div class="mt-3 bg-danger" id="dismiss">
+                <img src="../background/back.svg" height="15" width="15">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a class="bg-white text-dark" href="#">Home</a>
+                </li>
+                <li>
+                    <a href="addProduct">Add Product</a>
+                </li>
+                <li>
+                    <a href="manageProducts">Manage Products</a>
+                </li>
+                <li>
+                    <a href="manageOrders">Manage Orders</a>
+                </li>
+                <li>
+                    <a href="manageUsers">Manage Users</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs mt-5">
+                <li>
+                    <a href="logout" class="btn btn-dark">LOG OUT</a>
+                </li>
+            </ul>
+        </nav>
+
+         <!-- Page Content  -->
+         <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn ml-1 pr-0">
+                        <img src="../background/menu.svg" height="20" width="20">
+                        <span class="menu">MENU</span>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="container-fluid mt-5 p-0 mb-0">
+
+                <div class="container-fluid mt-5 p-0 mb-0">
+                
+                    <div class="row mt-2 p-1">
+                        <div class="col mx-auto col-md-6 bg-white text-center shadow-lg pt-1">
+                            <h1 class="h2 mt-2 bg-dark pt-1 pb-1" style="font-family: 'Kaushan Script'; color: #fed136; ">Welcome Admin</h1>
+                            <p class="text-justify">Admin can perform the following operations:</p>
+                            <ul class="text-left">
+                                <li>
+                                  <strong>Manage Products</strong>
+                                </li>
+                                <li class="mt-2">
+                                  <strong>Manage Users</strong>
+                                </li>
+                                <li class="mt-2">
+                                  <strong>Manage Orders</strong>
+                                </li>
+                                <li class="mt-2">
+                                  <strong>Manage Reports</strong>
+                                </li>
+                                <li class="mt-2">
+                                  <strong>Maintain the website!</strong>
+                                </li>
+                            </ul>
+
+                            <p class="text-center text-break shadow text-dark bg-white">Incase of any query, Mail us on : <strong class="font-weight-bold">gouravhammad477@gmail.com</strong> OR Contact : <strong class="font-weight-bold">9826527244</strong></p>
+                        </div>
+                    </div>    
+                </div>
+
+            </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+

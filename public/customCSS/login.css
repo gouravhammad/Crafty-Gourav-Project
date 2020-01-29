@@ -1,0 +1,16 @@
+.sign-button
+{
+  border-radius: 0px;
+}
+
+.anker
+{
+  color: #4285F4;
+}
+
+.error
+{
+  font-weight: 600;
+  font-size: 12px;
+  color: red;
+}
