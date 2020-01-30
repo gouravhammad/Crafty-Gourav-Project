@@ -1,15 +1,6 @@
-const nodemailer = require('nodemailer')
+const sgMail = require('@sendgrid/mail');
 
-transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, 
-    auth: {
-      user: process.env.NODEMAILER_ACCOUNT,
-      pass: process.env.NODEMAILER_PASSWORD 
-    }
-});
-  
+sgMail.setApiKey(process.env.SEND_GRID_KEY);
 
 sendMail = function(email,optNumber)
 {
@@ -20,10 +11,7 @@ sendMail = function(email,optNumber)
         text: "Your OTP code is "+optNumber+" , Don't share it with anyone."
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 sendPassword = function(email,password)
@@ -35,10 +23,7 @@ sendPassword = function(email,password)
         text: "Your Old Password is "+password+" , Don't share it with anyone. Thank you for joining us"
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 orderPlaced = function(email,content)
@@ -50,10 +35,7 @@ orderPlaced = function(email,content)
         text: content
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 cancelOrder = function(email,content)
@@ -65,10 +47,7 @@ cancelOrder = function(email,content)
         text: content
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 sendFeedback = function(content)
@@ -80,10 +59,7 @@ sendFeedback = function(content)
         text: content
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 removeUser = function(email,content)
@@ -95,10 +71,7 @@ removeUser = function(email,content)
         text: content
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 sendDelivered = function(email,content)
@@ -110,10 +83,7 @@ sendDelivered = function(email,content)
         text: content
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 sendCanNotProcess = function(email,content)
@@ -125,10 +95,7 @@ sendCanNotProcess = function(email,content)
         text: content
     };
 
-    transporter.sendMail(msg,function(error,info){  
-        if(error) console.log("ERROR IN SENDING MAIL : ", error)
-        console.log("SUCCESS IN SENDING MAIL : ", info)
-    })
+    sgMail.send(msg);
 }
 
 module.exports = {sendMail,sendPassword,orderPlaced,cancelOrder,sendFeedback,removeUser,sendDelivered,sendCanNotProcess}
