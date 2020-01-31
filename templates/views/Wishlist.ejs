@@ -11,7 +11,7 @@
 
     <title>Crafty Gourav</title>
 
-    <link rel='icon' href='../background/logo.jpg' />
+    <link rel='icon' href='/background/logo.jpg' />
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/customCSS/sidebar.css">
     <link rel="stylesheet" href="/customCSS/common.css"> 
@@ -27,7 +27,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar" class="bg-danger">
             <div class="mt-3 bg-danger" id="dismiss">
-                <img src="../background/back.svg" height="15" width="15">
+                <img src="/background/back.svg" height="15" width="15">
             </div>
 
             <ul class="list-unstyled components">
@@ -67,11 +67,11 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn ml-1 pr-0">
-                        <img src="../background/menu.svg" height="20" width="20">
+                        <img src="/background/menu.svg" height="20" width="20">
                         <span class="menu">MENU</span>
                     </button>
                     <form class="form-inline input-group-sm" method="POST" action="searchProduct">
-                        <a href="cart"><img class="mr-2" src="../background/cart.svg" height="20" width="20"><span class="notification text-center"><%= cartTotal[0].count %></span></a>
+                        <a href="cart"><img class="mr-2" src="/background/cart.svg" height="20" width="20"><span class="notification text-center"><%= cartTotal[0].count %></span></a>
                         <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" style="width: 140px;" required>
                         <button class="btn btn-outline-success my-2 my-sm-0 btn-sm ml-1 mr-2" type="submit">Search</button>
                     </form>    
@@ -94,7 +94,7 @@
                            
                         <div class="row p-2 shadow-sm bg-white mb-2">
                             <div class="col col-3 p-0 text-center">
-                                <img src="../products/<%= items[i].pPicture %>" class="shadow" widht="80" height="80">
+                                <img src="/products/<%= items[i].pPicture %>" class="shadow" widht="80" height="80">
                             </div>
                             <div class="col col-5">
                                 <div class="row" style="height: 56px;">
