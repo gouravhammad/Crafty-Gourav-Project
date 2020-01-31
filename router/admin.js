@@ -295,7 +295,7 @@ router.post('/addProduct', [
     check('pName','Must be of Min 10 and Max 35 length').trim().isLength({ min: 10 , max: 35}),
     check('pDesc','Must be of Min 40 and Max 130 length').trim().isLength({ min: 40 , max: 130}),
     check('pPrice','Must be of Min 49 and Max 9999 Value').trim().isInt({min: 49, max: 9999}),
-    check('picsReq','Must be of Min 1 and Max 50 Value').trim().isInt({min: 1, max: 50}),
+    check('picsReq','Must be of Min 0 and Max 50 Value').trim().isInt({min: 0, max: 50}),
     check('daysReq','Must be of Min 1 and Max 15 value').trim().isInt({min: 1, max: 15})
     ], (req, res) => {
 
@@ -468,7 +468,7 @@ router.post('/saveProductChanges', [
     check('pName','Must be of Min 10 and Max 35 length').trim().isLength({ min: 10 , max: 35}),
     check('pDesc','Must be of Min 40 and Max 130 length').trim().isLength({ min: 40 , max: 130}),
     check('pPrice','Must be of Min 49 and Max 9999 Value').trim().isInt({min: 49, max: 9999}),
-    check('picsReq','Must be of Min 1 and Max 50 Value').trim().isInt({min: 1, max: 50}),
+    check('picsReq','Must be of Min 0 and Max 50 Value').trim().isInt({min: 0, max: 50}),
     check('daysReq','Must be of Min 1 and Max 15 value').trim().isInt({min: 1, max: 15})
     ], (req, res) => {
 
