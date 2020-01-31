@@ -26,7 +26,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="mt-3 bg-white" id="dismiss">
-                <img src="background/back.svg" height="15" width="15">
+                <img src="/background/back.svg" height="15" width="15">
             </div>
 
             <ul class="list-unstyled components">
@@ -51,11 +51,11 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn ml-1">
-                        <img src="background/menu.svg" height="20" width="20">
+                        <img src="/background/menu.svg" height="20" width="20">
                         <span class="menu">MENU</span>
                     </button>
                     <form class="form-inline input-group-sm" method="POST" action="searchProduct">
-                        <a href="login"><img class="mr-2" src="background/cart.svg" height="20" width="20"></a>
+                        <a href="login"><img class="mr-2" src="/background/cart.svg" height="20" width="20"></a>
                         <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" style="width: 140px;" required>
                         <button class="btn btn-outline-success my-2 my-sm-0 btn-sm ml-1 mr-2" type="submit">Search</button>
                     </form>    
@@ -76,13 +76,13 @@
                             </ol>
                             <div class="carousel-inner">
                               <div class="carousel-item active">
-                                <img class="d-block w-100" src="background/1.jpg" alt="First slide">
+                                <img class="d-block w-100" src="/background/1.jpg" alt="First slide">
                               </div>
                               <div class="carousel-item">
-                                <img class="d-block w-100" src="background/3.jpg" alt="Second slide">
+                                <img class="d-block w-100" src="/background/3.jpg" alt="Second slide">
                               </div>
                               <div class="carousel-item">
-                                <img class="d-block w-100" src="background/1.jpg" alt="Third slide">
+                                <img class="d-block w-100" src="/background/1.jpg" alt="Third slide">
                               </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -103,7 +103,7 @@
                     <div class="col text-right p-0">
                         <div class="dropdown mr-3">
                             <button class="btn btn-light shadow-sm" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="form-inline" src="background/filter.svg" height="30" width="30">
+                                <img class="form-inline" src="/background/filter.svg" height="30" width="30">
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <a href="#" class="dropdown-item disabled font-weight-bold">Category</a>
@@ -144,7 +144,7 @@
                             <div class="col col-6 col-md-3 p-1">
                                 <div class="card mt-3 rounded shadow pb-0">
                                     <div class="card-body pt-2 pb-2 pl-2 pr-2 text-center">
-                                        <a href="productDetailsHome?pId=<%=result[i].pId%>"><img src="products/<%= result[i].pPicture %>" class="card-img-top" alt="product" style="max-width: 350px; max-height: 350px;"></a>
+                                        <a href="productDetailsHome?pId=<%=result[i].pId%>"><img src="/products/<%= result[i].pPicture %>" class="card-img-top" alt="product" style="max-width: 350px; max-height: 350px;"></a>
                                     </div>
                                     <div class="card-body p-1">
                                     <h5 class="card-title text-center font-weight-bold" style="min-height: 70px;"><a class="anker" href="productDetailsHome?pId=<%=result[i].pId%>"><%= result[i].pName %></a></h5>
