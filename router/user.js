@@ -655,10 +655,25 @@ router.post('/updateProfilePic',function(req,res){
                 
                 connection.query(sql,function(error,result){
 
-                    if(error) throw error
-
-                    res.redirect('account')   
+                    if(error) throw error  
                 }) 
+
+                // START : Saving images in seperate table because heroku stores data for 2 hours
+                var blobImage = fs.readFileSync("public/profilePic/" + storage.picName)
+        
+                var sql2 = "insert into uploads value ? "
+                var data = [["public/profilePic/"+storage.picName,blobImage]]
+
+                connection.query(sql2,[data],function(err,result){
+                            
+                    if(err)
+                    {   console.log("ERROR IN SAVING USER PROFILE PIC")
+                        throw err
+                    }
+
+                    res.redirect('account') 
+                }) 
+                //END
             }
         })
     }

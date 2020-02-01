@@ -4,6 +4,7 @@ const commonFun = require('../utility/commonFun')
 const mail = require('../utility/mail')
 const express = require('express')
 const multer = require('multer')
+const fs = require('fs')
 const path = require('path')
 const router = express.Router()
 
@@ -415,6 +416,20 @@ router.post('/addProductPic',function(req,res){
                     if(er) throw er
             
                     req.session.product = null
+                })
+
+                // START : Saving images in seperate table because heroku stores data for 2 hours
+                var blobImage = fs.readFileSync("public/products/" + storage.picName)
+        
+                var sql2 = "insert into uploads value ? "
+                var data = [["public/products/"+storage.picName,blobImage]]
+
+                connection.query(sql2,[data],function(err,result){
+                            
+                    if(err)
+                    {   console.log("ERROR IN SAVING PRODUCT addProductPic")
+                        throw err
+                    }
 
                     res.render('Alert',{
                         type:"success",
@@ -422,7 +437,8 @@ router.post('/addProductPic',function(req,res){
                         text:"Product has been successfully added",
                         link:"manageProducts"
                     })
-                })
+                }) 
+                //END
             }
         })
     }
@@ -613,15 +629,32 @@ router.post('/saveProductPicChanges',function(req,res){
                 connection.query(sql,function(err,result){
 
                     if(err) throw err
+                })    
+                
+
+                // START : Saving images in seperate table because heroku stores data for 2 hours
+                var blobImage = fs.readFileSync("public/products/" + storage.picName)
         
+                var sql2 = "insert into uploads value ? "
+                var data = [["public/products/"+storage.picName,blobImage]]
+
+                connection.query(sql2,[data],function(err,result){
+                            
+                    if(err)
+                    {   console.log("ERROR IN SAVING PRODUCT saveProductPicChanges")
+                        throw err
+                    }
+
                     res.render('Alert',{
                         type:"success",
                         title:"Product Pic Updated",
                         text:"Product picture has been successfully updated",
                         link:"manageProducts"
                     })
-                })        
+                }) 
+                //END
             }
+    
         })
     }
     catch(e)

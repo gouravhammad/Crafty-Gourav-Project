@@ -1,7 +1,9 @@
 const express = require('express')
 const bodyparser = require('body-parser')
 const session = require('express-session')
+const connection = require('./utility/mysqlConn')
 const path = require('path')
+const fs = require('fs')
 const homeRouter = require('./router/home')
 const userRouter = require('./router/user')
 const adminRouter = require('./router/admin')
@@ -25,6 +27,20 @@ app.use(session({
 // View Engine Setup
 app.set('views',path.join(__dirname,'templates/views'))
 app.set('view engine','ejs')
+
+//Saving All pictures to desired location from database
+var sql = "select * from uploads";
+connection.query(sql,function(error,result){
+
+    if(error) throw error
+    
+    for(i = 0; i < result.length; i++)
+    {
+        fs.writeFile(result[i].path, result[i].imageData,'base64', function(err) {
+            if(err) console.log(err)
+        });
+    }
+}) 
 
 // Router Handler
 app.use('/',homeRouter)
