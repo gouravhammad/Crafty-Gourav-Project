@@ -4,6 +4,7 @@ const syncConnection = require('../utility/sync-mysql')
 const commonFun = require('../utility/commonFun')
 const mail = require('../utility/mail')
 const express = require('express')
+const fs = require('fs')
 const multer = require('multer')
 const path = require('path')
 const stripe = require('stripe')(process.env.STRIPE_KEY)
@@ -956,9 +957,14 @@ router.post('/placeOrder', [
             }
 
             var myMsg = "Your order has been successfully placed on "+date+"\n\nTotal Items: "+data.length+"\nTotal Amount: Rs. "+totalAmount+"\nPayment Mode: Cash On Delivery\nDelivery Address: "+order.address+"\nContact No: "+order.mobileno+"\n\nThank you for placing your order. Our team will contact you within 24 hours for more details regarding product customisation. Stay happy :) and continue shopping!"
-           
+
             // SENDING MAIL TO USER FOR NOTIFICATION OF 'ORDER PLACED'
             mail.orderPlaced(user.email,myMsg)
+
+            var adminMsg = "Order placed by "+user.username+" on "+date+"\n\nTotal Items: "+data.length+"\nTotal Amount: Rs. "+totalAmount+"\nPayment Mode: Cash On Delivery\nDelivery Address: "+order.address+"\nContact No: "+order.mobileno+"\n\n Login to see more details!"
+            
+            // NOTIFY ADMIN THAT ORDER IS PLACED
+            mail.orderPlaced('gouravhammad477@gmail.com',adminMsg)
 
             var sql = "delete from cart where email='"+user.email+"' ;"
        
@@ -1022,18 +1028,24 @@ router.get('/cancelOrder',function(req,res){
             var sample = result[0]
             var orderData = sample[0]
             var myMsg = ''
+            var adminMsg = ''
 
             if(orderData.paymentMode == 'Cash On Delivery')
             {
                 myMsg = "Your order has been canceled now which was placed on "+orderData.dateAndTime+"\n\nTotal Amount: Rs. "+orderData.total+"\nPayment Mode: Cash On Delivery\nDelivery Address: "+orderData.address+"\nContact No: "+orderData.mobileno+"\n\nShare your feedback with us, Stay happy :) and continue shopping!"
+                adminMsg = "Order placed by "+user.username+" has been canceled now which was placed on "+orderData.dateAndTime+"\n\nTotal Amount: Rs. "+orderData.total+"\nPayment Mode: Cash On Delivery\nDelivery Address: "+orderData.address+"\nContact No: "+orderData.mobileno+"\n\nEnjoy your day :)"
             }
             else
             {
                 myMsg = "Your order has been canceled now which was placed on "+orderData.dateAndTime+"\n\nTotal Amount: Rs. "+orderData.total+"\nPayment Mode: Card Payment\nDelivery Address: "+orderData.address+"\nContact No: "+orderData.mobileno+"\n\nYour amount will be refunded within 24 hours to your account. Share your feedback with us, Stay happy :) and continue shopping!"
+                adminMsg = "Order placed by "+user.username+" has been canceled now which was placed on "+orderData.dateAndTime+"\n\nTotal Amount: Rs. "+orderData.total+"\nPayment Mode: Card Payment\nDelivery Address: "+orderData.address+"\nContact No: "+orderData.mobileno+"\n\nKindly refund the money within 24 hours from now."
             }
             
             // SENDING MAIL TO USER FOR NOTIFICATION OF 'ORDER CANCELED'
             mail.cancelOrder(user.email,myMsg)
+
+            // NOTIFY ADMIN OF CANCLED ORDER
+            mail.cancelOrder('gouravhammad477@gmail.com',adminMsg)
 
             req.session.cancelOrder = null
             
@@ -1125,6 +1137,11 @@ router.post('/savePayment',function(req,res){
            
            // SENDING MAIL TO USER FOR NOTIFICATION OF 'ORDER PLACED'
             mail.orderPlaced(user.email,myMsg)
+
+            var adminMsg = "Order placed by "+user.username+" on "+date+"\n\nTotal Items: "+data.length+"\nTotal Amount: Rs. "+totalAmount+"\nPayment Mode: Card Payment \nDelivery Address: "+order.address+"\nContact No: "+order.mobileno+"\n\n Checkout your account to see recieved money."
+            
+            // NOTIFY ADMIN THAT ORDER IS PLACED
+            mail.orderPlaced('gouravhammad477@gmail.com',adminMsg)
         
             var sql = "delete from cart where email='"+user.email+"' ;"
 
